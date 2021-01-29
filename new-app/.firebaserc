@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "new-app-da206": {
+      "hosting": {
+        "new-app": [
+          "new-app-da206"
+        ]
+      }
+    }
+  }
+}
