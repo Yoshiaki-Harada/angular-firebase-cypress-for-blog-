@@ -23,14 +23,6 @@ import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/firestore'
       provide: USE_FIRESTORE_EMULATOR,
       useValue: environment.useEmulators ? ['localhost', 8080] : undefined
     },
-    {
-      provide: FIRESTORE_SETTINGS,
-      useValue: environment.useEmulators ? {
-        host: 'localhost:8080',
-        ssl: false,
-        experimentalForceLongPolling: true
-      } : {}
-    },
   ],
   bootstrap: [AppComponent]
 })

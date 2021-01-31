@@ -2,7 +2,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
-import { attachCustomCommands } from "cypress-firebase";
+import { attachCustomCommands } from "cypress-firebase/lib";
+import { clearMessagesData, insertMessagesData } from "./setup";
 
 declare global {
     namespace Cypress {
@@ -32,4 +33,8 @@ if (firestoreEmulatorHost) {
 
 attachCustomCommands({ Cypress, cy, firebase });
 
+before(() => {
+    clearMessagesData()
+    insertMessagesData()
+})
 export { }
