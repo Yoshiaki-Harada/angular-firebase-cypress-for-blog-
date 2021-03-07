@@ -15,14 +15,9 @@ jobs:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       - name: Move secret
         run: mv $HOME/secrets/environment.dev.ts ./new-app/src/environments
-      - name: log
-        run: |
-          pwd
-          ls
-        working-directory: ./enviroments/firesbase
       - name: Build and Deploy to dev
         run: ./build_and_deploy.sh dev
         shell: bash
-        working-directory: ./enviroments/firesbase
+        working-directory: ./enviroments/firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }}
