@@ -6,7 +6,7 @@ src=sources
 cwd=$(realpath $(dirname $0))
 project_root=$(git rev-parse --show-toplevel)
 
-cd ../tuning-front
+cd ../new-app
 ./build.sh "${env}"
 cd ${cwd}
 
