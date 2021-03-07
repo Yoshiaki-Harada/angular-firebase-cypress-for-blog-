@@ -20,4 +20,4 @@ jobs:
         shell: bash
         working-directory: ./enviroments/firesbase
         env:
-          FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }
+          FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }}
