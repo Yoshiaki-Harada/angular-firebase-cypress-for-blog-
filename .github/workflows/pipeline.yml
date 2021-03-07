@@ -1,0 +1,23 @@
+name: new-app-e2e-pipeline
+on: [push]
+jobs:
+  deploy-to-dev-for-e2e:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g firebase-tools
+      - name: Decrypt secret
+        run: ./decrypt_secret.sh environment.dev.ts
+        working-directory: ./.github/scripts
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      - name: Move secret
+        run: mv $HOME/secrets/environment.dev.ts ./new-app/src/environments
+      - name: Build and Deploy to dev
+        run: ./build_and_deploy.sh dev
+        shell: bash
+        working-directory: ./enviroments/firesbase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }
