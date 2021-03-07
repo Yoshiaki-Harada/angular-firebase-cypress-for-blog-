@@ -20,5 +20,5 @@ npm install
 ng build -c "${env}"
 
 echo "copy output to firebase public.."
-cp -R "${cwd}/${src}/dist/new-app/" "${project_root}/enviroments/firesbase/public"/
+cp -R "${cwd}/${src}/dist/new-app/" "${project_root}/enviroments/firebase/public"/
 rm -rf "${cwd}/${src}"
