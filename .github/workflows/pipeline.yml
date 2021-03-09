@@ -34,7 +34,7 @@ jobs:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       - name: Move secret
         run: mv $HOME/secrets/serviceAccount.json ./e2e
-      - name: Create videos and screenshots diirectory
+      - name: Create videos and screenshots directory
         working-directory: ./e2e/cypress
         run: |
           mkdir videos && \
@@ -44,7 +44,7 @@ jobs:
         with:
           working-directory: e2e
           start: npm run cypress:run
-          wait-on: https://tuning-dev.web.app/
+          wait-on: https://new-app-da206.web.app
           browser: chrome
           record: true
         env:
