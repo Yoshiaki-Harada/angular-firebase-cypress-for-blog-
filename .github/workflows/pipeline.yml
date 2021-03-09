@@ -21,3 +21,45 @@ jobs:
         working-directory: ./enviroments/firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }}
+
+  execute-e2e:
+    runs-on: ubuntu-20.04
+    needs: deploy-to-dev-for-e2e
+    steps:
+      - uses: actions/checkout@master
+      - name: Decrypt secret
+        run: ./decrypt_secret.sh serviceAccount.json
+        working-directory: ./.github/scripts
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      - name: Move secret
+        run: mv $HOME/secrets/serviceAccount.json ./e2e
+      - name: Create videos and screenshots diirectory
+        working-directory: ./e2e/cypress
+        run: |
+          mkdir videos && \
+          mkdir screenshots
+      - name: Cypress Run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: e2e
+          start: npm run cypress:run
+          wait-on: https://tuning-dev.web.app/
+          browser: chrome
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }}
+          GCLOUD_PROJECT: tuning-dev
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_REF: ${{ github.ref }}
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
