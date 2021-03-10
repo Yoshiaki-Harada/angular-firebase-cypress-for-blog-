@@ -2,6 +2,6 @@
   "projects": {
     "default": "new-app-da206",
     "staging": "new-app-staging",
-    "dev": "new-app-da206"
+    "dev": "new-app-dev-edb1d"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://new-app-da206.web.app",
+  "baseUrl": "https://new-app-dev-edb1d.web.app",
   "supportFile": "cypress/support/index.ts",
   "projectId": "4q2xjb"
 }

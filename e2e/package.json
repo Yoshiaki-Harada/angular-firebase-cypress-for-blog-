@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "emulators": "firebase emulators:start",
-    "local:open": "cross-env FIRESTORE_EMULATOR_HOST=\"localhost:$(cat firebase.json | jq .emulators.firestore.port)\" GCLOUD_PROJECT=new-app-da206 cypress open",
-    "local:run": "cross-env FIRESTORE_EMULATOR_HOST=\"localhost:$(cat firebase.json | jq .emulators.firestore.port)\" GCLOUD_PROJECT=new-app-da206 cypress run",
-    "cypress:run": "cross-env GCLOUD_PROJECT=new-app cypress run"
+    "local:open": "cross-env FIRESTORE_EMULATOR_HOST=\"localhost:$(cat firebase.json | jq .emulators.firestore.port)\" GCLOUD_PROJECT=new-app-dev cypress open",
+    "local:run": "cross-env FIRESTORE_EMULATOR_HOST=\"localhost:$(cat firebase.json | jq .emulators.firestore.port)\" GCLOUD_PROJECT=new-app-dev cypress run",
+    "cypress:run": "cross-env GCLOUD_PROJECT=new-app-dev-edb1d cypress run"
   },
   "keywords": [],
   "author": "",

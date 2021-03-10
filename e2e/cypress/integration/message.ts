@@ -1,6 +1,6 @@
 describe('ホーム画面 ', () => {
     it('メッセージを見ることができる', () => {
-        cy.visit('http://localhost:4200/');
+        cy.visit('/'); //package.jsonのbaseUrl
         cy.contains('こんにちは').should('be.visible')
     })
 })
