@@ -50,7 +50,6 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FIREBASE_TOKEN: ${{ secrets.SERVICE_ACCOUNT }}
-          GCLOUD_PROJECT: tuning-dev
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_REF: ${{ github.ref }}
       - uses: actions/upload-artifact@v1
